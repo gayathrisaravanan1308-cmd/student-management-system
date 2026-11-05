@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Management System</h1>
+        <a href="/add" class="btn-add">+ Add Student</a>
+        <table>
+            <tr>
+                <th>ID</th><th>Name</th><th>Roll No</th><th>Dept</th><th>Email</th><th>Phone</th><th>Action</th>
+            </tr>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.id }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.roll_no }}</td>
+                <td>{{ s.department }}</td>
+                <td>{{ s.email }}</td>
+                <td>{{ s.phone }}</td>
+                <td>
+                    <a href="/edit/{{ s.id }}" class="btn-edit">Edit</a>
+                    <a href="/delete/{{ s.id }}" class="btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
